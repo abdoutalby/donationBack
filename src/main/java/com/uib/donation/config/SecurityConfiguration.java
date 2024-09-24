@@ -46,7 +46,10 @@ public class SecurityConfiguration {
                             "/swagger-ui.html",
                             "/webjars/**",
                             "/v3/api-docs/**",
-                            "/swagger-ui/**"
+                            "/swagger-ui/**",
+                            "/api/campagne/almostFinished/**",
+                            "/api/users/countDonatiare/**",
+                            "/api/users/countDonneur/**"
                     ).permitAll();
                     authConfig.requestMatchers("/error").permitAll();
                     authConfig.anyRequest().authenticated();

@@ -3,6 +3,7 @@ package com.uib.donation.services;
 import com.uib.donation.models.User;
 import com.uib.donation.repositories.UserRepository;
 import com.uib.donation.utils.LoginRequest;
+import com.uib.donation.utils.TotalResponse;
 import com.uib.donation.utils.UserUpdateDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -62,7 +63,10 @@ public class UserServiceImplementation implements UserService{
 
     @Override
     public ResponseEntity<?> countDonneur() {
-        return ResponseEntity.ok(userRepository.countAllByuserType(User.UserType.GIVER));
+
+        var users =  userRepository.findAllByuserType(User.UserType.GIVER);
+        TotalResponse response = new TotalResponse(users.size());
+        return ResponseEntity.ok(response);
     }
 
     @Override
@@ -94,12 +98,20 @@ public class UserServiceImplementation implements UserService{
 
     @Override
     public ResponseEntity<?> countDonataire() {
-        return ResponseEntity.ok(userRepository.countAllByuserType(User.UserType.TAKER));
+
+        var users =  userRepository.findAllByuserType(User.UserType.TAKER);
+        TotalResponse response = new TotalResponse(users.size());
+        return ResponseEntity.ok(response);
+
     }
 
     @Override
     public ResponseEntity<?> countAdmin() {
-        return ResponseEntity.ok(userRepository.countAllByuserType(User.UserType.ADMIN));
+
+        var users =  userRepository.findAllByuserType(User.UserType.ADMIN);
+        TotalResponse response = new TotalResponse(users.size());
+        return ResponseEntity.ok(response);
+
     }
 
 }
