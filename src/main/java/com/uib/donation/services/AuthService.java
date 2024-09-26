@@ -70,7 +70,9 @@ public class AuthService {
             return ResponseEntity.ok(AuthenticationResponse.builder()
                     .token(JwtToken)
                     .build());
-        }return ResponseEntity.status(403).build();
+        }
+    
+        return ResponseEntity.status(403).build();
     }
 
     public ResponseEntity<?> forgetPassword(LoginRequest loginRequest) {

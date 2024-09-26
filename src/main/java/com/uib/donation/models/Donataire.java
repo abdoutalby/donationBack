@@ -20,6 +20,7 @@ public class Donataire {
     private String logo;
     private String taxId;
     private String rib;
+    private String phone;
     private String description;
     private double totalRecived =0;
     @OneToOne
