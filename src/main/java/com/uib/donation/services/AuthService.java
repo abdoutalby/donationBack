@@ -3,6 +3,7 @@ package com.uib.donation.services;
 
 import com.uib.donation.config.JwtService;
 import com.uib.donation.models.User;
+import com.uib.donation.models.User.UserStatus;
 import com.uib.donation.repositories.UserRepository;
 import com.uib.donation.utils.AuthenticationResponse;
 import com.uib.donation.utils.LoginRequest;
@@ -55,9 +56,10 @@ public class AuthService {
             UserDetails user = Opuser.get();
             log.info(loginRequest.getEmail());
             log.info(loginRequest.getPassword());
-            if (!user.isEnabled()) {
+            log.info(user.toString());
+            if (Opuser.get().getStatus().equals(UserStatus.PENDING)) {
                 return ResponseEntity.status(400).body("user is disabled");
-            }
+            } 
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             loginRequest.getEmail(),

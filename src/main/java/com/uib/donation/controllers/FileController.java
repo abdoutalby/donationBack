@@ -13,7 +13,7 @@ import java.io.IOException;
 @RequestMapping("/api/files/")
 @RequiredArgsConstructor
 @CrossOrigin(origins = {
-        "http://localhost:4200"
+    "http://localhost:4200"
 })
 public class FileController {
     private  final FileServiceImplementation fileService ;
